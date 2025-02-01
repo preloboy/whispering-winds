@@ -10,6 +10,8 @@ import { Button } from '@/components/Button'
 import { Places } from '@/constants/Places'
 import { ButtonWithIcon } from '@/components/ButtonWithIcon'
 import { Services } from '@/constants/Services'
+import { Packages } from '@/constants/Packages'
+import { Tabbar } from '@/components/Tabbar'
 
 export default function index() {
   return (
@@ -36,6 +38,15 @@ export default function index() {
               desc='this is a description. you can write anything in here...'
 
             />
+          ))}
+        </ScrollView>
+      </Box>
+      <Box style={styles.tabbar}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {Packages.map((packageItem, index) => (
+            <Tabbar key={index}>
+              {packageItem.name}
+            </Tabbar>
           ))}
         </ScrollView>
       </Box>
@@ -68,8 +79,21 @@ const styles = StyleSheet.create({
   },
   service: {
     flexDirection: 'row',
-    justifyContent:'flex-start',
-    gap:10,
+    justifyContent: 'flex-start',
+    gap: 10,
     alignItems: 'center',
+  },
+  tabbar: {
+    flexDirection: 'row',
+    marginVertical: 10,
+    marginHorizontal: 10,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   }
 });

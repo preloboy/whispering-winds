@@ -12,7 +12,7 @@ interface Package {
 export const Packages: Package[] = [
   {
     id: "holiday-01",
-    name: "Holiday Special Package",
+    name: "Holiday Special",
     description: "Perfect getaway for your holidays with amazing destinations",
     duration: "5 days / 4 nights",
     price: 999,
@@ -30,7 +30,7 @@ export const Packages: Package[] = [
   },
   {
     id: "business-01",
-    name: "Business Tour Package",
+    name: "Business Tour",
     description: "Professional travel arrangements for business travelers",
     duration: "3 days / 2 nights",
     price: 799,
@@ -39,7 +39,7 @@ export const Packages: Package[] = [
   },
   {
     id: "couple-01",
-    name: "Romantic Couple Package",
+    name: "Romantic Couple",
     description: "Romantic getaway for couples with special arrangements",
     duration: "4 days / 3 nights",
     price: 1299,
@@ -48,7 +48,7 @@ export const Packages: Package[] = [
   },
   {
     id: "friends-01",
-    name: "Friends Group Package",
+    name: "Friends Group",
     description: "Adventure and fun package perfect for friend groups",
     duration: "6 days / 5 nights",
     price: 899,
@@ -57,7 +57,7 @@ export const Packages: Package[] = [
   },
   {
     id: "school-01",
-    name: "Educational School Tour",
+    name: "Educational Tour",
     description: "Educational and fun tour package for school groups",
     duration: "5 days / 4 nights",
     price: 599,
