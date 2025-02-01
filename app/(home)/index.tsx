@@ -68,7 +68,8 @@ const styles = StyleSheet.create({
   },
   service: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent:'flex-start',
+    gap:10,
     alignItems: 'center',
   }
 });
