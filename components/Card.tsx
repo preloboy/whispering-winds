@@ -27,7 +27,7 @@ export const Card: FC<CardProps> = ({ style, image, imgSource, title, desc, ...r
                 resizeMode="cover"
                 style={styles.image}
             />
-            <TextType style={styles.title} type="subtitle">{title}</TextType>
+            <TextType style={styles.subtitle} type="defaultSemiBold">{title}</TextType>
         </TouchableOpacity>
     )
 }
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
         height: '100%',
         position: 'absolute',
     },
-    title: {
+    subtitle: {
         color: 'white',
-        paddingHorizontal: 10,
+        paddingHorizontal: 5,
         paddingVertical: 20,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },

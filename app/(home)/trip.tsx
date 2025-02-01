@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import Container from '@/components/Container'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function trip() {
   return (
-    <Container>
+    <SafeAreaView>
       <Text>trip</Text>
-    </Container>
+    </SafeAreaView>
   )
 }
