@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingBottom: 15,
     marginHorizontal: 10,
-    marginVertical: 10,
+    marginVertical: 5,
     borderRadius: 10
   },
   list: {
