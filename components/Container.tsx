@@ -14,8 +14,7 @@ export function Container({ children, style, col, ...otherProps }: ContainerProp
             style={[
                 style,
                 styles.default,
-                col && styles.col
-                ,
+                col && styles.col,
             ]}
             {...otherProps}
         >

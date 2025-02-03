@@ -76,7 +76,8 @@ const styles = StyleSheet.create({
   profile: {
     // width: '100%',
     paddingLeft: 15,
-    marginTop: 20,
+    marginTop: 30,
+    marginBottom:10,
     justifyContent: 'space-between',
   },
   details: {
