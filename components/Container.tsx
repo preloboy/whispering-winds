@@ -1,28 +1,26 @@
-import { ScrollView, StyleSheet, View, type ViewProps } from 'react-native';
+import { StyleSheet, View, type ViewProps } from 'react-native';
 
-import { useThemeColor } from '@/hooks/useThemeColor';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { ReactNode } from 'react';
 
 export type ContainerProps = ViewProps & {
     children?: ReactNode;
-    lightColor?: string;
-    darkColor?: string;
 };
 
-export function Container({ children, style, lightColor, darkColor, ...otherProps }: ContainerProps) {
-    const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+export function Container({ children, style, ...otherProps }: ContainerProps) {
 
     return (
-        <SafeAreaView style={[{ backgroundColor }, style, styles.default]} {...otherProps} >
-                {children}
-        </SafeAreaView>
+        <View style={[style, styles.default]} {...otherProps} >
+            {children}
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
     default: {
-        paddingHorizontal: 20,
-        paddingVertical: 20
-    }
+        marginTop:10,
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        gap: 10,
+        alignItems: 'center',
+    },
 });

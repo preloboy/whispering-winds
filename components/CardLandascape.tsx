@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     card: {
         width: 270,
         height: 150,
-        backgroundColor: 'white',
         justifyContent: 'flex-end',
         alignItems: 'center',
         position: 'relative',
@@ -44,7 +43,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         overflow: 'hidden',
-        marginHorizontal: 4
+        marginLeft:10
     },
     image: {
         width: '100%',
@@ -69,8 +68,8 @@ const styles = StyleSheet.create({
     ,
     box: {
         width: '100%',
-        opacity:0.7,
-        paddingVertical:10
+        opacity: 0.7,
+        paddingVertical: 10,
     }
 });
 

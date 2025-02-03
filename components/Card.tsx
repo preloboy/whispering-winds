@@ -1,20 +1,19 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import { Box } from "./Box";
 import { Image, ImageSourcePropType, StyleSheet, TouchableOpacity, ViewProps } from "react-native";
 import { TextType } from "./TextType";
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 export type CardProps = ViewProps & {
+    children?: ReactNode
     image?: string,
     imgSource?: ImageSourcePropType,
-    title: string,
-    desc?: string,
 }
 
 const defaultImage = require('../assets/images/icon.png')
 
 
-export const Card: FC<CardProps> = ({ style, image, imgSource, title, desc, ...rest }) => {
+export const Card: FC<CardProps> = ({ style, image, imgSource, children, ...rest }) => {
     const imageSource = image ? { uri: image } : imgSource || defaultImage;
 
     return (
@@ -27,7 +26,7 @@ export const Card: FC<CardProps> = ({ style, image, imgSource, title, desc, ...r
                 resizeMode="cover"
                 style={styles.image}
             />
-            <TextType style={styles.subtitle} type="defaultSemiBold">{title}</TextType>
+            <Box>{children}</Box>
         </TouchableOpacity>
     )
 }
@@ -37,7 +36,6 @@ const styles = StyleSheet.create({
         // flex: 1,
         width: 150,
         height: 200,
-        backgroundColor: 'white',
         justifyContent: 'flex-end',
         alignItems: 'center',
         position: 'relative',
@@ -45,7 +43,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
         overflow: 'hidden',
-        marginHorizontal:4
+        marginLeft:10
     },
     image: {
         width: '100%',

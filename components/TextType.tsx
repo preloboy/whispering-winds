@@ -6,6 +6,7 @@ export type TextTypeProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
   type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
+  header?: boolean;
 };
 
 export function TextType({
@@ -13,6 +14,7 @@ export function TextType({
   lightColor,
   darkColor,
   type = 'default',
+  header = false,
   ...rest
 }: TextTypeProps) {
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
@@ -20,7 +22,7 @@ export function TextType({
   return (
     <Text
       style={[
-        { color },
+        { color }, styles.included, header ? styles.header : undefined,
         type === 'default' ? styles.default : undefined,
         type === 'title' ? styles.title : undefined,
         type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
@@ -34,6 +36,12 @@ export function TextType({
 }
 
 const styles = StyleSheet.create({
+  included: {
+    paddingHorizontal: 15,
+  },
+  header:{
+    marginTop: 20,
+  },
   default: {
     fontSize: 16,
     lineHeight: 24,
@@ -47,12 +55,12 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     lineHeight: 32,
-    paddingBottom: 10,
-    paddingTop:20
   },
   subtitle: {
     fontSize: 20,
     fontWeight: 'bold',
+    lineHeight:38
+
   },
   link: {
     lineHeight: 30,

@@ -12,62 +12,64 @@ import { Services } from '@/constants/Services'
 import { Packages } from '@/constants/Packages'
 import { Tabbar } from '@/components/Tabbar'
 import { CardLanscape } from '@/components/CardLandascape'
+import { Scroll } from '@/components/Scroll'
 
 export default function index() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView 
-        showsVerticalScrollIndicator={true} 
-        horizontal={false} 
-        contentContainerStyle={{ flexGrow: 1 }}
+      <Scroll
+        horizontal={false}
       >
-        <Box style={styles.container}>
-          <TextType type='title'>What's new today?</TextType>
-          <Container style={styles.service}>
-            {Services.map((service, index) => (
-              <ButtonWithIcon key={index} title={service.name} icon={service.icon} />
-            ))}
-          </Container>
-        </Box>
-        <Box style={styles.packages}>
-          <TextType />
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <TextType type='title' header={true}>What's new today?</TextType>
+        <Container>
+          {Services.map((service, index) => (
+            <ButtonWithIcon key={index} title={service.name} icon={service.icon} />
+          ))}
+        </Container>
+        <TextType type='subtitle' header={true}>Popular packages</TextType>
+        <Box>
+          <Scroll horizontal={true}>
             {Packages.map((packageItem, index) => (
               <Tabbar key={index}>
                 {packageItem.name}
               </Tabbar>
             ))}
-          </ScrollView>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {Packages.map((packageItem, index) => (
+          </Scroll>
+        </Box>
+        <Container>
+          <Scroll horizontal={true}>
+            {Packages.map((item, index) => (
               <CardLanscape
                 key={index}
                 image='https://th.bing.com/th/id/OIP.yeveYKVrulCwFOTANK3R-AHaEo?rs=1&pid=ImgDetMain'
               >
-                <TextType type='subtitle' style={{ paddingHorizontal: 10 }}>Title</TextType>
-                <TextType type='defaultSemiBold' style={{ paddingHorizontal: 10 }}>Subtitle</TextType>
+                <TextType type='subtitle' style={{ paddingHorizontal: 10 }}>{item.name}</TextType>
+                <TextType type='defaultSemiBold' style={{ paddingHorizontal: 10 }}>
+                  ₹ {item.price} |
+                  <TextType style={{ paddingHorizontal: 10 }}>{item.duration}</TextType>
+                </TextType>
+
               </CardLanscape>
             ))}
-          </ScrollView>
-        </Box>
-        <Box style={styles.container}>
-          <Box style={styles.inline}>
-            <TextType type='subtitle'>Famous tourist places </TextType>
-            <Button type='filled'>View all</Button>
-          </Box>
-          <ScrollView horizontal={true} style={styles.list} showsHorizontalScrollIndicator={false}>
+          </Scroll>
+        </Container>
+        <View style={styles.inline}>
+          <TextType type='subtitle'>Famous tourist places</TextType>
+          <Button type='filled'>View all</Button>
+        </View>
+        <Container>
+          <Scroll horizontal={true} style={styles.list} >
             {Places.map((place, index) => (
               <Card
                 key={index}
                 image='https://th.bing.com/th/id/R.80048c94faacac8b7ff6af18efa3d92a?rik=Ac82coHKVHLVyg&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2016%2f01%2fnature-wallpapers-8.jpg&ehk=GoUR7nA3jNm0gIdWFJoMVL1iu%2bJuWOU7Nu7KkgKZzeQ%3d&risl=&pid=ImgRaw&r=0'
-                title={place.name}
-                desc='this is a description. you can write anything in here...'
-
-              />
+              >
+                <TextType type="defaultSemiBold">{place.name}</TextType>
+              </Card>
             ))}
-          </ScrollView>
-        </Box>
-      </ScrollView>
+          </Scroll>
+        </Container>
+      </Scroll>
     </SafeAreaView>
   )
 }
@@ -93,13 +95,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginVertical: 10
-  },
-  service: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    gap: 10,
-    alignItems: 'center',
+    marginTop: 20
   },
   tabbar: {
     flexDirection: 'row',
