@@ -29,10 +29,10 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 0,
         borderRadius: 100,
         backgroundColor: 'rgba(0,0,0,0.1)',
         width: 80,
-        height: 80
+        height: 80,
+        marginLeft:15
     }
 });

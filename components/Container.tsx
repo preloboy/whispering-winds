@@ -4,12 +4,21 @@ import { ReactNode } from 'react';
 
 export type ContainerProps = ViewProps & {
     children?: ReactNode;
+    col?: boolean,
 };
 
-export function Container({ children, style, ...otherProps }: ContainerProps) {
+export function Container({ children, style, col, ...otherProps }: ContainerProps) {
 
     return (
-        <View style={[style, styles.default]} {...otherProps} >
+        <View
+            style={[
+                style,
+                styles.default,
+                col && styles.col
+                ,
+            ]}
+            {...otherProps}
+        >
             {children}
         </View>
     );
@@ -17,10 +26,9 @@ export function Container({ children, style, ...otherProps }: ContainerProps) {
 
 const styles = StyleSheet.create({
     default: {
-        marginTop:10,
         flexDirection: 'row',
-        justifyContent: 'flex-start',
-        gap: 10,
-        alignItems: 'center',
     },
+    col: {
+        flexDirection: 'column',
+    }
 });
