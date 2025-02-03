@@ -15,53 +15,59 @@ import { CardLanscape } from '@/components/CardLandascape'
 
 export default function index() {
   return (
-    <SafeAreaView>
-      <Box style={styles.container}>
-        <TextType type='title'>What's new today?</TextType>
-        <Container style={styles.service}>
-          {Services.map((service, index) => (
-            <ButtonWithIcon key={index} title={service.name} icon={service.icon} />
-          ))}
-        </Container>
-      </Box>
-      <Box style={styles.packages}>
-        <TextType  />
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {Packages.map((packageItem, index) => (
-            <Tabbar key={index}>
-              {packageItem.name}
-            </Tabbar>
-          ))}
-        </ScrollView>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {Packages.map((packageItem, index) => (
-            <CardLanscape
-              key={index}
-              image='https://th.bing.com/th/id/OIP.yeveYKVrulCwFOTANK3R-AHaEo?rs=1&pid=ImgDetMain'
-            >
-              <TextType type='subtitle' style={{ paddingHorizontal: 10 }}>Title</TextType>
-              <TextType type='defaultSemiBold' style={{ paddingHorizontal: 10 }}>Subtitle</TextType>
-            </CardLanscape>
-          ))}
-        </ScrollView>
-      </Box>
-      <Box style={styles.container}>
-        <Box style={styles.inline}>
-          <TextType type='subtitle'>Famous tourist places </TextType>
-          <Button type='filled'>View all</Button>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView 
+        showsVerticalScrollIndicator={true} 
+        horizontal={false} 
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <Box style={styles.container}>
+          <TextType type='title'>What's new today?</TextType>
+          <Container style={styles.service}>
+            {Services.map((service, index) => (
+              <ButtonWithIcon key={index} title={service.name} icon={service.icon} />
+            ))}
+          </Container>
         </Box>
-        <ScrollView horizontal={true} style={styles.list} showsHorizontalScrollIndicator={false}>
-          {Places.map((place, index) => (
-            <Card
-              key={index}
-              image='https://th.bing.com/th/id/R.80048c94faacac8b7ff6af18efa3d92a?rik=Ac82coHKVHLVyg&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2016%2f01%2fnature-wallpapers-8.jpg&ehk=GoUR7nA3jNm0gIdWFJoMVL1iu%2bJuWOU7Nu7KkgKZzeQ%3d&risl=&pid=ImgRaw&r=0'
-              title={place.name}
-              desc='this is a description. you can write anything in here...'
+        <Box style={styles.packages}>
+          <TextType />
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            {Packages.map((packageItem, index) => (
+              <Tabbar key={index}>
+                {packageItem.name}
+              </Tabbar>
+            ))}
+          </ScrollView>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            {Packages.map((packageItem, index) => (
+              <CardLanscape
+                key={index}
+                image='https://th.bing.com/th/id/OIP.yeveYKVrulCwFOTANK3R-AHaEo?rs=1&pid=ImgDetMain'
+              >
+                <TextType type='subtitle' style={{ paddingHorizontal: 10 }}>Title</TextType>
+                <TextType type='defaultSemiBold' style={{ paddingHorizontal: 10 }}>Subtitle</TextType>
+              </CardLanscape>
+            ))}
+          </ScrollView>
+        </Box>
+        <Box style={styles.container}>
+          <Box style={styles.inline}>
+            <TextType type='subtitle'>Famous tourist places </TextType>
+            <Button type='filled'>View all</Button>
+          </Box>
+          <ScrollView horizontal={true} style={styles.list} showsHorizontalScrollIndicator={false}>
+            {Places.map((place, index) => (
+              <Card
+                key={index}
+                image='https://th.bing.com/th/id/R.80048c94faacac8b7ff6af18efa3d92a?rik=Ac82coHKVHLVyg&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2016%2f01%2fnature-wallpapers-8.jpg&ehk=GoUR7nA3jNm0gIdWFJoMVL1iu%2bJuWOU7Nu7KkgKZzeQ%3d&risl=&pid=ImgRaw&r=0'
+                title={place.name}
+                desc='this is a description. you can write anything in here...'
 
-            />
-          ))}
-        </ScrollView>
-      </Box>
+              />
+            ))}
+          </ScrollView>
+        </Box>
+      </ScrollView>
     </SafeAreaView>
   )
 }

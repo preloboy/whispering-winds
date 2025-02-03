@@ -1,4 +1,4 @@
-import { StyleSheet, View, type ViewProps } from 'react-native';
+import { ScrollView, StyleSheet, View, type ViewProps } from 'react-native';
 
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -15,14 +15,14 @@ export function Container({ children, style, lightColor, darkColor, ...otherProp
 
     return (
         <SafeAreaView style={[{ backgroundColor }, style, styles.default]} {...otherProps} >
-            {children}
+                {children}
         </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
-    default:{
-        paddingHorizontal:20,
-        paddingVertical:20
+    default: {
+        paddingHorizontal: 20,
+        paddingVertical: 20
     }
 });
