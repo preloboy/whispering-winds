@@ -20,8 +20,8 @@ export function Tabbar({ children, ...otherProps }: TabbarProps) {
 
 const styles = StyleSheet.create({
     tabbar:{
-        paddingHorizontal: 5,
         borderRadius: 10,
-        marginHorizontal: 10
+        marginHorizontal: 10,
+        marginBottom:10,
     }
 })

@@ -1,7 +1,6 @@
 import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
 import React from 'react'
 import { Container } from '@/components/Container'
-import Title from '@/components/Title'
 import { Box } from '@/components/Box'
 import { Card } from '@/components/Card'
 import { SafeAreaView } from 'react-native-safe-area-context'
@@ -12,6 +11,7 @@ import { ButtonWithIcon } from '@/components/ButtonWithIcon'
 import { Services } from '@/constants/Services'
 import { Packages } from '@/constants/Packages'
 import { Tabbar } from '@/components/Tabbar'
+import { CardLanscape } from '@/components/CardLandascape'
 
 export default function index() {
   return (
@@ -23,6 +23,27 @@ export default function index() {
             <ButtonWithIcon key={index} title={service.name} icon={service.icon} />
           ))}
         </Container>
+      </Box>
+      <Box style={styles.packages}>
+        <TextType  />
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {Packages.map((packageItem, index) => (
+            <Tabbar key={index}>
+              {packageItem.name}
+            </Tabbar>
+          ))}
+        </ScrollView>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          {Packages.map((packageItem, index) => (
+            <CardLanscape
+              key={index}
+              image='https://th.bing.com/th/id/OIP.yeveYKVrulCwFOTANK3R-AHaEo?rs=1&pid=ImgDetMain'
+            >
+              <TextType type='subtitle' style={{ paddingHorizontal: 10 }}>Title</TextType>
+              <TextType type='defaultSemiBold' style={{ paddingHorizontal: 10 }}>Subtitle</TextType>
+            </CardLanscape>
+          ))}
+        </ScrollView>
       </Box>
       <Box style={styles.container}>
         <Box style={styles.inline}>
@@ -38,15 +59,6 @@ export default function index() {
               desc='this is a description. you can write anything in here...'
 
             />
-          ))}
-        </ScrollView>
-      </Box>
-      <Box style={styles.tabbar}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          {Packages.map((packageItem, index) => (
-            <Tabbar key={index}>
-              {packageItem.name}
-            </Tabbar>
           ))}
         </ScrollView>
       </Box>
@@ -90,6 +102,31 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  cardLanscape: {
+    flexDirection: 'row',
+    marginVertical: 10,
+    marginHorizontal: 10,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  packages: {
+    marginVertical: 10,
+    marginHorizontal: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
