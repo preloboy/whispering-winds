@@ -26,7 +26,7 @@ export function Button({
         <TouchableOpacity activeOpacity={0.6}>
             <TextType type='link'
                 style={[
-                    { color, backgroundColor },
+                    { color, backgroundColor },styles.default,
                     type === 'filled' ? styles.filled : undefined,
                     type === 'outline' ? styles.outline : undefined,
                     style,
@@ -40,10 +40,16 @@ export function Button({
 
 const styles = StyleSheet.create({
     default: {
-        fontSize: 16,
-        lineHeight: 24,
+        fontSize: 20,
+        marginHorizontal:10,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 10,
     },
     filled: {
+        
     },
     outline: {
         fontSize: 20,

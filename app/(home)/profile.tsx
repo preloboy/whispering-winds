@@ -8,23 +8,25 @@ import { ImageView } from '@/components/ImageView'
 import { Box } from '@/components/Box'
 import { Ionicons } from '@expo/vector-icons'
 import { Logo } from '@/components/Logo'
+import { Button } from '@/components/Button'
 
 export default function profile() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Scroll>
         <Container style={styles.profile}>
-          <Container >
+          <Container style={styles.user}>
             <ImageView
               type='round'
               image='https://toppng.com/uploads/preview/stock-person-png-stock-photo-man-11563049686zqeb9zmqjd.png'
             />
-            <Container style={styles.user} col={true}>
+            <Container col={true}>
               <TextType type='subtitle'>Hi!, User</TextType>
               <TextType type='defaultSemiBold'>usename</TextType>
               <TextType >email@mail.com</TextType>
             </Container>
           </Container>
+          <TextType type='defaultSemiBold' header={true}>Edit</TextType>
         </Container>
         <Container style={styles.header}>
           <TextType type='defaultSemiBold' header={true}>Personal Details</TextType>
@@ -62,6 +64,9 @@ export default function profile() {
             <Logo name='logo-instagram' size={28} />
           </Container>
         </Container>
+        <Button type='filled' style={styles.logout}>
+          <TextType type='defaultSemiBold' color='red' >Logout</TextType>
+        </Button>
       </Scroll>
     </SafeAreaView>
   )
@@ -69,7 +74,7 @@ export default function profile() {
 
 const styles = StyleSheet.create({
   profile: {
-    width: '100%',
+    // width: '100%',
     paddingLeft: 15,
     marginTop: 20,
     justifyContent: 'space-between',
@@ -86,8 +91,15 @@ const styles = StyleSheet.create({
     gap: 20
   },
   user: {
+    alignItems:'center'
   },
   header: {
     justifyContent: 'space-between',
+  },
+  logout: {
+    marginTop: 20,
+    marginHorizontal: 15,
+    borderRadius: 10,
+    paddingVertical: 10,
   }
 })
