@@ -68,7 +68,7 @@ export default function profile() {
           </Container>
         </Container>
         <Button onPress={logout} type='filled' style={styles.logout}>
-          <TextType type='defaultSemiBold' color='red' >Logout</TextType>
+          <TextType type='defaultSemiBold' color='red' style={{ width: '100%', textAlign: 'center' }} >Logout</TextType>
         </Button>
       </Scroll>
     </SafeAreaView>

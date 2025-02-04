@@ -3,14 +3,18 @@ import { Text, type TextProps, StyleSheet, TouchableOpacity } from 'react-native
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { TextType } from './TextType';
 import { ReactNode } from 'react';
+import { Box } from './Box';
+import { Container } from './Container';
 
 export type ButtonProps = TextProps & {
     children?: ReactNode;
     lightColor?: string;
     darkColor?: string;
-    type?: 'filled' | 'outline';
-    onPress?: ()=> void;
-    
+    type?: 'normal' | 'filled' | 'outline';
+    onPress?: () => void;
+    col?: boolean;
+    round?: boolean,
+    align?: 'center' | 'start'
 };
 
 export function Button({
@@ -20,42 +24,60 @@ export function Button({
     darkColor,
     type = 'filled',
     onPress,
+    col,
+    round,
+    align
 }: ButtonProps) {
     const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
 
     return (
-        <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
-            <TextType type='link'
+        <TouchableOpacity
+            activeOpacity={0.6}
+            onPress={onPress}
+        >
+            <Container
+                col={col}
                 style={[
-                    { color, backgroundColor },styles.default,
-                    type === 'filled' ? styles.filled : undefined,
+                    { color, backgroundColor }, styles.default,
+                    round && styles.round,
                     type === 'outline' ? styles.outline : undefined,
+                    type === 'normal' ? styles.normal : undefined,
+                    align ==='center' && styles.center,
                     style,
                 ]}
             >
                 {children}
-            </TextType>
+            </Container>
         </TouchableOpacity>
+
     );
 }
 
 const styles = StyleSheet.create({
-    default: {
-        fontSize: 20,
-        marginHorizontal:10,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 10,
+
+    center:{
+        textAlign:'center'
     },
-    filled: {
-        
+    round: {
+        borderRadius: 50,
+        paddingHorizontal: 20,
+        paddingVertical: 15
+    },
+    default: {
+        fontSize: 16,
+        marginHorizontal: 10,
+        fontWeight: 'bold',
+        padding: 10,
+        gap: 5,
+        alignItems: 'center',
+    },
+    normal: {
+
     },
     outline: {
-        fontSize: 20,
-        fontWeight: 'bold',
+        borderWidth: 1,
+        borderColor: '#000',
     },
 });

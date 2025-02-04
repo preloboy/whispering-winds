@@ -7,13 +7,11 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { TextType } from '@/components/elements/TextType'
 import { Button } from '@/components/elements/Button'
 import { Places } from '@/constants/Places'
-import { ButtonWithIcon } from '@/components/elements/ButtonWithIcon'
 import { Services } from '@/constants/Services'
 import { Packages } from '@/constants/Packages'
 import { Tabbar } from '@/components/elements/Tabbar'
-import { CardLanscape } from '@/components/elements/CardLandascape'
 import { Scroll } from '@/components/elements/Scroll'
-import { CardWithDetails } from '@/components/elements/CardWithDetails'
+import { Ionicons } from '@expo/vector-icons'
 
 export default function index() {
   return (
@@ -24,10 +22,16 @@ export default function index() {
         <TextType type='title' header={true}>What's new today?</TextType>
         <Container>
           {Services.map((service, index) => (
-            <ButtonWithIcon key={index} title={service.name} icon={service.icon} />
+            <Button key={index} col={true} round align='center'>
+              <Ionicons name={service.icon as keyof typeof Ionicons.glyphMap} size={22} />
+              <TextType type='defaultSemiBold'>{service.name}</TextType>
+            </Button>
           ))}
         </Container>
-        <TextType type='subtitle' header={true}>Popular packages</TextType>
+        <View style={styles.inline}>
+          <TextType type='subtitle' header={true}>Popular Packages</TextType>
+          <Button type='normal'>View all</Button>
+        </View>
         <Box>
           <Scroll horizontal={true}>
             {Packages.map((packageItem, index) => (
@@ -40,7 +44,8 @@ export default function index() {
         <Container>
           <Scroll horizontal={true}>
             {Packages.map((item, index) => (
-              <CardWithDetails
+              <Card
+                landscape
                 key={index}
                 image='https://th.bing.com/th/id/OIP.yeveYKVrulCwFOTANK3R-AHaEo?rs=1&pid=ImgDetMain'
               >
@@ -50,18 +55,19 @@ export default function index() {
                   <TextType style={{ paddingHorizontal: 10 }}> {item.maxPeople} Person</TextType>
                 </TextType>
                 <TextType type='default' style={{ paddingHorizontal: 10 }}>{item.description}</TextType>
-              </CardWithDetails>
+              </Card>
             ))}
           </Scroll>
         </Container>
         <View style={styles.inline}>
-          <TextType type='subtitle'>Famous tourist places</TextType>
-          <Button type='filled'>View all</Button>
+          <TextType type='subtitle' header={true}>Famous tourist places</TextType>
+          <Button type='filled'><TextType>View all</TextType></Button>
         </View>
         <Container>
           <Scroll horizontal={true} style={styles.list} >
             {Places.map((place, index) => (
               <Card
+                portrait
                 key={index}
                 image='https://th.bing.com/th/id/R.80048c94faacac8b7ff6af18efa3d92a?rik=Ac82coHKVHLVyg&riu=http%3a%2f%2fwonderfulengineering.com%2fwp-content%2fuploads%2f2016%2f01%2fnature-wallpapers-8.jpg&ehk=GoUR7nA3jNm0gIdWFJoMVL1iu%2bJuWOU7Nu7KkgKZzeQ%3d&risl=&pid=ImgRaw&r=0'
               >

@@ -6,9 +6,9 @@ import { Input } from '@/components/elements/Input'
 import { Box } from '@/components/elements/Box'
 import { Scroll } from '@/components/elements/Scroll'
 import { Container } from '@/components/elements/Container'
-import { CardWithDetails } from '@/components/elements/CardWithDetails'
 import { Packages } from '@/constants/Packages'
 import { Button } from '@/components/elements/Button'
+import { Card } from '@/components/elements/Card'
 
 export default function trip() {
   const [destination, setDestination] = useState('')
@@ -26,7 +26,8 @@ export default function trip() {
       <Container style={styles.cardWithDetails}>
         <Scroll horizontal={true}>
           {Packages.map((item, index) => (
-            <CardWithDetails
+            <Card
+              landscape
               style={styles.card}
               key={index}
               image='https://cubanvr.com/wp-content/uploads/2023/07/ai-image-generators.webp'
@@ -39,7 +40,7 @@ export default function trip() {
                   <TextType key={index} type='smallBold' color='white' style={{ paddingHorizontal: 5, paddingVertical: 2, backgroundColor: 'indigo', borderRadius: 2 }} >{inclusion}</TextType>
                 ))}
               </Container>
-            </CardWithDetails>
+            </Card>
           ))}
         </Scroll>
       </Container>

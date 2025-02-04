@@ -43,10 +43,10 @@ export function TextType({
 
 const styles = StyleSheet.create({
   included: {
-    paddingHorizontal: 15,
-
+    textAlignVertical:'center',
   },
   header: {
+    paddingHorizontal: 15,
     paddingVertical: 10,
   },
   default: {

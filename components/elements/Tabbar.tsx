@@ -8,7 +8,7 @@ export type TabbarProps = {
     children: ReactNode,
 };
 
-export function Tabbar({ children, ...otherProps }: TabbarProps) {
+export function Tabbar({ children }: TabbarProps) {
     return (
         <TouchableOpacity activeOpacity={0.6} style={styles.tabbar}>
             <TextType style={{paddingRight:5}}>
@@ -21,6 +21,6 @@ export function Tabbar({ children, ...otherProps }: TabbarProps) {
 const styles = StyleSheet.create({
     tabbar:{
         borderRadius: 10,
-        paddingVertical:5
+        paddingVertical:5,
     }
 })
