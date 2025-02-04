@@ -6,7 +6,7 @@ interface Package {
   duration: string;
   price: number;
   inclusions: string[];
-  maxPeople: number;
+  maxPeople: number; 
 }
 
 export const Packages: Package[] = [

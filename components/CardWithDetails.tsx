@@ -34,11 +34,12 @@ export const CardWithDetails: FC<CardWithDetailsProps> = ({ style, image, imgSou
 
 const styles = StyleSheet.create({
     card: {
-        width:180,
+        width: 180,
+        height: '100%',
         alignItems: 'center',
         borderRadius: 10,
         overflow: 'hidden',
-        marginLeft:10
+        marginLeft: 10,
     },
     image: {
         width: '100%',
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
         width: '100%',
         opacity: 0.7,
         paddingVertical: 10,
+        flexGrow: 1
     }
 });
 

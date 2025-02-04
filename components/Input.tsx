@@ -10,14 +10,14 @@ export type InputProps = TextInputProps&{
 }
 
 export const Input:FC<InputProps> =({style, placeholder, onChangeText, lightColor, darkColor}) =>{
-    // const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+    const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 return(
     <TextInput 
     placeholder={placeholder} 
     onChangeText={onChangeText} 
     style={[
-        {backgroundColor}, 
+        {backgroundColor, color}, 
         style,
         styles.input
         

@@ -5,7 +5,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 export type TextTypeProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
-  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link';
+  type?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'small' | 'smallBold' | 'link';
   header?: boolean;
   color?: string;
 };
@@ -31,6 +31,8 @@ export function TextType({
         type === 'title' ? styles.title : undefined,
         type === 'defaultSemiBold' ? styles.defaultSemiBold : undefined,
         type === 'subtitle' ? styles.subtitle : undefined,
+        type === 'small' ? styles.small : undefined,
+        type === 'smallBold' ? styles.smallBold : undefined,
         type === 'link' ? styles.link : undefined,
         style,
       ]}
@@ -42,9 +44,10 @@ export function TextType({
 const styles = StyleSheet.create({
   included: {
     paddingHorizontal: 15,
+
   },
   header: {
-    marginTop: 20,
+    paddingVertical: 10,
   },
   default: {
     fontSize: 16,
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
     lineHeight: 32,
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
     lineHeight: 38
 
@@ -71,4 +74,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#0a7ea4',
   },
+  small: {
+    fontSize: 12,
+    lineHeight: 16,
+  },
+  smallBold: {
+    fontSize: 12,
+    lineHeight: 16,
+    fontWeight: 'bold',
+  }
 });
