@@ -20,7 +20,9 @@ export const CardWithDetails: FC<CardWithDetailsProps> = ({ style, image, imgSou
     return (
         <TouchableOpacity
             activeOpacity={0.5}
-            style={[style, styles.card]}
+            style={[
+                style, 
+                styles.card]}
         >
             <Image
                 source={imageSource}

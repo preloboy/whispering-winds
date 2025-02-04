@@ -13,6 +13,7 @@ import { Packages } from '@/constants/Packages'
 import { Tabbar } from '@/components/Tabbar'
 import { CardLanscape } from '@/components/CardLandascape'
 import { Scroll } from '@/components/Scroll'
+import { CardWithDetails } from '@/components/CardWithDetails'
 
 export default function index() {
   return (
@@ -39,17 +40,17 @@ export default function index() {
         <Container>
           <Scroll horizontal={true}>
             {Packages.map((item, index) => (
-              <CardLanscape
+              <CardWithDetails
                 key={index}
                 image='https://th.bing.com/th/id/OIP.yeveYKVrulCwFOTANK3R-AHaEo?rs=1&pid=ImgDetMain'
               >
                 <TextType type='subtitle' style={{ paddingHorizontal: 10 }}>{item.name}</TextType>
                 <TextType type='defaultSemiBold' style={{ paddingHorizontal: 10 }}>
                   ₹ {item.price} |
-                  <TextType style={{ paddingHorizontal: 10 }}>{item.duration}</TextType>
+                  <TextType style={{ paddingHorizontal: 10 }}> {item.maxPeople} Person</TextType>
                 </TextType>
-
-              </CardLanscape>
+                <TextType type='default' style={{ paddingHorizontal: 10 }}>{item.description}</TextType>
+              </CardWithDetails>
             ))}
           </Scroll>
         </Container>
