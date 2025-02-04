@@ -9,6 +9,8 @@ export type ButtonProps = TextProps & {
     lightColor?: string;
     darkColor?: string;
     type?: 'filled' | 'outline';
+    onPress?: ()=> void;
+    
 };
 
 export function Button({
@@ -17,13 +19,14 @@ export function Button({
     lightColor,
     darkColor,
     type = 'filled',
+    onPress,
 }: ButtonProps) {
     const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
 
     return (
-        <TouchableOpacity activeOpacity={0.6}>
+        <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
             <TextType type='link'
                 style={[
                     { color, backgroundColor },styles.default,

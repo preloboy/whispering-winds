@@ -6,11 +6,14 @@ import { Container } from '@/components/elements/Container'
 import { TextType } from '@/components/elements/TextType'
 import { ImageView } from '@/components/elements/ImageView'
 import { Box } from '@/components/elements/Box'
-import { Ionicons } from '@expo/vector-icons'
 import { Logo } from '@/components/elements/Logo'
 import { Button } from '@/components/elements/Button'
+import { supabase } from '@/lib/supabase'
+import { useGlobalContext } from '@/lib/GlobalProvider'
 
 export default function profile() {
+
+  const { logout } = useGlobalContext()
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Scroll>
@@ -64,7 +67,7 @@ export default function profile() {
             <Logo name='logo-instagram' size={28} />
           </Container>
         </Container>
-        <Button type='filled' style={styles.logout}>
+        <Button onPress={logout} type='filled' style={styles.logout}>
           <TextType type='defaultSemiBold' color='red' >Logout</TextType>
         </Button>
       </Scroll>
@@ -77,7 +80,7 @@ const styles = StyleSheet.create({
     // width: '100%',
     paddingLeft: 15,
     marginTop: 30,
-    marginBottom:10,
+    marginBottom: 10,
     justifyContent: 'space-between',
   },
   details: {
@@ -92,13 +95,13 @@ const styles = StyleSheet.create({
     gap: 20
   },
   user: {
-    alignItems:'center'
+    alignItems: 'center'
   },
   header: {
     justifyContent: 'space-between',
   },
   logout: {
-    marginTop: 20,
+    marginVertical: 20,
     marginHorizontal: 15,
     borderRadius: 10,
     paddingVertical: 10,

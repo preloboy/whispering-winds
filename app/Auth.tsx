@@ -10,11 +10,10 @@ export default function Auth() {
 
   const { session, setSession } = useGlobalContext()
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
+  const {getSession} = useGlobalContext()
 
+  useEffect(() => {
+    getSession()
     supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session)
     })
