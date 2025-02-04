@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Input } from '@/components/Input'
-import { Box } from '@/components/Box'
-import { TextType } from '@/components/TextType'
+import { Input } from '@/components/elements/Input'
+import { Box } from '@/components/elements/Box'
+import { TextType } from '@/components/elements/TextType'
 
 export default function search() {
   const [destination, setDestination] = useState('')

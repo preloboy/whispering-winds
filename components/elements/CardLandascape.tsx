@@ -1,19 +1,20 @@
-import { FC, ReactNode } from "react";
+import { Children, FC, ReactNode } from "react";
 import { Box } from "./Box";
 import { Image, ImageSourcePropType, StyleSheet, TouchableOpacity, ViewProps } from "react-native";
 import { TextType } from "./TextType";
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 export type CardProps = ViewProps & {
-    children?: ReactNode
+    children?: ReactNode,
     image?: string,
     imgSource?: ImageSourcePropType,
+    desc?: string,
 }
 
-const defaultImage = require('../assets/images/icon.png')
+const defaultImage = require('../../assets/images/icon.png')
 
 
-export const Card: FC<CardProps> = ({ style, image, imgSource, children, ...rest }) => {
+export const CardLanscape: FC<CardProps> = ({ style, image, imgSource, children, desc, ...rest }) => {
     const imageSource = image ? { uri: image } : imgSource || defaultImage;
 
     return (
@@ -26,16 +27,15 @@ export const Card: FC<CardProps> = ({ style, image, imgSource, children, ...rest
                 resizeMode="cover"
                 style={styles.image}
             />
-            <Box>{children}</Box>
+            <Box style={styles.box}>{children}</Box>
         </TouchableOpacity>
     )
 }
 
 const styles = StyleSheet.create({
     card: {
-        // flex: 1,
-        width: 150,
-        height: 200,
+        width: 270,
+        height: 150,
         justifyContent: 'flex-end',
         alignItems: 'center',
         position: 'relative',
@@ -64,6 +64,12 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 10,
         width: '100%',
         textAlign: 'center',
+    }
+    ,
+    box: {
+        width: '100%',
+        opacity: 0.7,
+        paddingVertical: 10,
     }
 });
 

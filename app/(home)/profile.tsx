@@ -1,14 +1,14 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { Scroll } from '@/components/Scroll'
-import { Container } from '@/components/Container'
-import { TextType } from '@/components/TextType'
-import { ImageView } from '@/components/ImageView'
-import { Box } from '@/components/Box'
+import { Scroll } from '@/components/elements/Scroll'
+import { Container } from '@/components/elements/Container'
+import { TextType } from '@/components/elements/TextType'
+import { ImageView } from '@/components/elements/ImageView'
+import { Box } from '@/components/elements/Box'
 import { Ionicons } from '@expo/vector-icons'
-import { Logo } from '@/components/Logo'
-import { Button } from '@/components/Button'
+import { Logo } from '@/components/elements/Logo'
+import { Button } from '@/components/elements/Button'
 
 export default function profile() {
   return (

@@ -10,7 +10,7 @@ export type ImageViewProps = ImageProps & {
     type: 'round' | 'portrait' | 'landscape',
 }
 
-const defaultImage = require('../assets/images/icon.png')
+const defaultImage = require('../../assets/images/icon.png')
 
 
 export const ImageView: FC<ImageViewProps> = ({ style, image, imgSource, type, ...rest }) => {

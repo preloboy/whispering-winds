@@ -1,14 +1,14 @@
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { TextType } from '@/components/TextType'
-import { Input } from '@/components/Input'
-import { Box } from '@/components/Box'
-import { Scroll } from '@/components/Scroll'
-import { Container } from '@/components/Container'
-import { CardWithDetails } from '@/components/CardWithDetails'
+import { TextType } from '@/components/elements/TextType'
+import { Input } from '@/components/elements/Input'
+import { Box } from '@/components/elements/Box'
+import { Scroll } from '@/components/elements/Scroll'
+import { Container } from '@/components/elements/Container'
+import { CardWithDetails } from '@/components/elements/CardWithDetails'
 import { Packages } from '@/constants/Packages'
-import { Button } from '@/components/Button'
+import { Button } from '@/components/elements/Button'
 
 export default function trip() {
   const [destination, setDestination] = useState('')
