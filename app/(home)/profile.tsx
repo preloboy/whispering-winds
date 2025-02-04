@@ -67,9 +67,7 @@ export default function profile() {
             <Logo name='logo-instagram' size={28} />
           </Container>
         </Container>
-        <Button onPress={logout} type='filled' style={styles.logout}>
-          <TextType type='defaultSemiBold' color='red' style={{ width: '100%', textAlign: 'center' }} >Logout</TextType>
-        </Button>
+        <Button onPress={logout} name='Logout' type='filled' style={styles.logout} />
       </Scroll>
     </SafeAreaView>
   )

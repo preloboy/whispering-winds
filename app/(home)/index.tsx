@@ -11,7 +11,6 @@ import { Services } from '@/constants/Services'
 import { Packages } from '@/constants/Packages'
 import { Tabbar } from '@/components/elements/Tabbar'
 import { Scroll } from '@/components/elements/Scroll'
-import { Ionicons } from '@expo/vector-icons'
 
 export default function index() {
   return (
@@ -22,15 +21,12 @@ export default function index() {
         <TextType type='title' header={true}>What's new today?</TextType>
         <Container>
           {Services.map((service, index) => (
-            <Button key={index} col={true} round align='center'>
-              <Ionicons name={service.icon as keyof typeof Ionicons.glyphMap} size={22} />
-              <TextType type='defaultSemiBold'>{service.name}</TextType>
-            </Button>
+            <Button key={index} col={true} name={service.name} icon={service.icon} round align='center' />
           ))}
         </Container>
         <View style={styles.inline}>
           <TextType type='subtitle' header={true}>Popular Packages</TextType>
-          <Button type='normal'>View all</Button>
+          <Button name='View all' type='normal' />
         </View>
         <Box>
           <Scroll horizontal={true}>
@@ -61,7 +57,7 @@ export default function index() {
         </Container>
         <View style={styles.inline}>
           <TextType type='subtitle' header={true}>Famous tourist places</TextType>
-          <Button type='filled'><TextType>View all</TextType></Button>
+          <Button type='filled' name='View all'/>
         </View>
         <Container>
           <Scroll horizontal={true} style={styles.list} >

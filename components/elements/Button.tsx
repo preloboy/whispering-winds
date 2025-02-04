@@ -5,6 +5,7 @@ import { TextType } from './TextType';
 import { ReactNode } from 'react';
 import { Box } from './Box';
 import { Container } from './Container';
+import { Ionicons } from '@expo/vector-icons';
 
 export type ButtonProps = TextProps & {
     children?: ReactNode;
@@ -14,11 +15,12 @@ export type ButtonProps = TextProps & {
     onPress?: () => void;
     col?: boolean;
     round?: boolean,
-    align?: 'center' | 'start'
+    align?: 'center' | 'start',
+    name: string,
+    icon?: string,
 };
 
 export function Button({
-    children,
     style,
     lightColor,
     darkColor,
@@ -26,9 +28,12 @@ export function Button({
     onPress,
     col,
     round,
-    align
+    align,
+    name,
+    icon
 }: ButtonProps) {
     const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+    const iconColor = useThemeColor({ light: lightColor, dark: darkColor }, 'icon');
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
 
@@ -44,11 +49,12 @@ export function Button({
                     round && styles.round,
                     type === 'outline' ? styles.outline : undefined,
                     type === 'normal' ? styles.normal : undefined,
-                    align ==='center' && styles.center,
+                    align === 'center' && styles.center,
                     style,
                 ]}
             >
-                {children}
+                <Ionicons name={icon as keyof typeof Ionicons.glyphMap} size={20} color={iconColor} />
+                <TextType>{name}</TextType>
             </Container>
         </TouchableOpacity>
 
@@ -57,8 +63,8 @@ export function Button({
 
 const styles = StyleSheet.create({
 
-    center:{
-        textAlign:'center'
+    center: {
+        textAlign: 'center'
     },
     round: {
         borderRadius: 50,
