@@ -1,10 +1,10 @@
-interface Place {
+export interface PlaceProps {
     name: string;
     city: string;
     country: string;
 }
 
-export const Places: Place[] = [
+export const Places: PlaceProps[] = [
     {
         name: "Eiffel Tower",
         city: "Paris",

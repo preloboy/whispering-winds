@@ -23,6 +23,11 @@ export const Services = [
         icon: 'home',
         description: 'Find the cheapest hotels to your destination',
         link: '/hotels'
+    },
+    {
+        name: 'Activities',
+        icon: 'activity',
+        description: 'Find the cheapest activities to your destination',
+        link: '/activities'
     }
-    ,
 ]
