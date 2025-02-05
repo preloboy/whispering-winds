@@ -1,5 +1,5 @@
 
-interface Package {
+export interface PackageProps {
   id: string;
   name: string;
   description: string;
@@ -9,7 +9,7 @@ interface Package {
   maxPeople: number; 
 }
 
-export const Packages: Package[] = [
+export const Packages: PackageProps[] = [
   {
     id: "holiday-01",
     name: "Holiday Special",
