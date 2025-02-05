@@ -29,7 +29,7 @@ export default function index() {
           />
         </Container>
         <Header title='Popular Packages' link='View all' />
-        <Box>
+        <Box style={{marginBottom:10}}>
           <FlatList
             data={Packages}
             renderItem={item => <Tabbar>{item.item.name}</Tabbar>}
