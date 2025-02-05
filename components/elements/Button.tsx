@@ -18,7 +18,8 @@ export type ButtonProps = TextProps & {
     align?: 'center' | 'start',
     name: string,
     icon?: string,
-    iconSize?: number
+    iconSize?: number,
+    link?: boolean
 };
 
 export function Button({
@@ -32,8 +33,10 @@ export function Button({
     align,
     name,
     icon,
-    iconSize = 18
+    iconSize = 18,
+    link
 }: ButtonProps) {
+    const linkColor = useThemeColor({ light: lightColor, dark: darkColor }, 'link');
     const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
     const iconColor = useThemeColor({ light: lightColor, dark: darkColor }, 'icon');
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
@@ -54,7 +57,7 @@ export function Button({
                 ]}
             >
                 <Ionicons name={icon as keyof typeof Ionicons.glyphMap} size={iconSize} color={iconColor} />
-                <TextType style={[{ color }, style]}>{name}</TextType>
+                <TextType style={[{ color: link ? linkColor : color }, style]}>{name}</TextType>
             </Container>
         </TouchableOpacity>
     );

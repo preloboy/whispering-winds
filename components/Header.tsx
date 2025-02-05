@@ -14,7 +14,7 @@ export const Header = ({ title, link, onPress }: HeaderProps) => {
     return (
         <Container style={styles.header}>
             <TextType type='subtitle' header={true}>{title}</TextType>
-            {link && <Button name={link} onPress={onPress} />}
+            {link && <Button name={link} onPress={onPress} link />}
         </Container>
     )
 
