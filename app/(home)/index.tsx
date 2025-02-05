@@ -11,6 +11,7 @@ import { Services } from '@/constants/Services'
 import { Packages } from '@/constants/Packages'
 import { Tabbar } from '@/components/elements/Tabbar'
 import { Scroll } from '@/components/elements/Scroll'
+import { Header } from '@/components/Header'
 
 export default function index() {
   return (
@@ -21,14 +22,11 @@ export default function index() {
         <TextType type='title' header={true}>What's new today?</TextType>
         <Container>
           {Services.map((service, index) => (
-            <Button key={index} col={true} name={service.name} icon={service.icon} round align='center' />
+            <Button key={index} col={true} name={service.name} icon={service.icon} round align='center' iconSize={24} />
           ))}
         </Container>
-        <View style={styles.inline}>
-          <TextType type='subtitle' header={true}>Popular Packages</TextType>
-          <Button name='View all' type='normal' />
-        </View>
-        <Box>
+        <Header title='Popular Packages' link='View all' />
+        <Box style={{ marginBottom: 10 }}>
           <Scroll horizontal={true}>
             {Packages.map((packageItem, index) => (
               <Tabbar key={index}>
@@ -55,12 +53,9 @@ export default function index() {
             ))}
           </Scroll>
         </Container>
-        <View style={styles.inline}>
-          <TextType type='subtitle' header={true}>Famous tourist places</TextType>
-          <Button type='filled' name='View all'/>
-        </View>
+        <Header title='Famous Places' link='View all' />
         <Container>
-          <Scroll horizontal={true} style={styles.list} >
+          <Scroll horizontal={true} >
             {Places.map((place, index) => (
               <Card
                 portrait
@@ -77,65 +72,65 @@ export default function index() {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    paddingHorizontal: 10,
-    paddingBottom: 15,
-    marginHorizontal: 10,
-    marginVertical: 5,
-    borderRadius: 10
-  },
-  list: {
-    flexDirection: 'row',
-    overflowX: 'scroll',
-  },
-  'list::-webkit-scrollbar': {
-    display: 'none', // For Chrome, Safari, and Opera
-  },
-  inline: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 20
-  },
-  tabbar: {
-    flexDirection: 'row',
-    marginVertical: 10,
-    marginHorizontal: 10,
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  cardLanscape: {
-    flexDirection: 'row',
-    marginVertical: 10,
-    marginHorizontal: 10,
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingHorizontal: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  packages: {
-    marginVertical: 10,
-    marginHorizontal: 10,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  }
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flexDirection: 'column',
+//     justifyContent: 'flex-start',
+//     paddingHorizontal: 10,
+//     paddingBottom: 15,
+//     marginHorizontal: 10,
+//     marginVertical: 5,
+//     borderRadius: 10
+//   },
+//   list: {
+//     flexDirection: 'row',
+//     overflowX: 'scroll',
+//   },
+//   'list::-webkit-scrollbar': {
+//     display: 'none', // For Chrome, Safari, and Opera
+//   },
+//   inline: {
+//     flexDirection: 'row',
+//     justifyContent: 'space-between',
+//     alignItems: 'center',
+//     marginTop: 20
+//   },
+//   tabbar: {
+//     flexDirection: 'row',
+//     marginVertical: 10,
+//     marginHorizontal: 10,
+//     borderRadius: 10,
+//     paddingVertical: 10,
+//     paddingHorizontal: 20,
+//     shadowColor: '#000',
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.25,
+//     shadowRadius: 3.84,
+//     elevation: 5,
+//   },
+//   cardLanscape: {
+//     flexDirection: 'row',
+//     marginVertical: 10,
+//     marginHorizontal: 10,
+//     borderRadius: 10,
+//     paddingVertical: 10,
+//     paddingHorizontal: 10,
+//     shadowColor: '#000',
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.25,
+//     shadowRadius: 3.84,
+//     elevation: 5,
+//   },
+//   packages: {
+//     marginVertical: 10,
+//     marginHorizontal: 10,
+//     paddingHorizontal: 10,
+//     paddingVertical: 10,
+//     borderRadius: 10,
+//     shadowColor: '#000',
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.25,
+//     shadowRadius: 3.84,
+//     elevation: 5,
+//   }
+// });

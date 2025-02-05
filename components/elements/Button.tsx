@@ -18,24 +18,25 @@ export type ButtonProps = TextProps & {
     align?: 'center' | 'start',
     name: string,
     icon?: string,
+    iconSize?: number
 };
 
 export function Button({
     style,
     lightColor,
     darkColor,
-    type = 'filled',
+    type,
     onPress,
     col,
     round,
     align,
     name,
-    icon
+    icon,
+    iconSize = 18
 }: ButtonProps) {
     const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
     const iconColor = useThemeColor({ light: lightColor, dark: darkColor }, 'icon');
     const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
-
 
     return (
         <TouchableOpacity
@@ -45,26 +46,26 @@ export function Button({
             <Container
                 col={col}
                 style={[
-                    { color, backgroundColor }, styles.default,
+                    styles.default,
                     round && styles.round,
-                    type === 'outline' ? styles.outline : undefined,
-                    type === 'normal' ? styles.normal : undefined,
+                    type === 'outline' && styles.outline,
+                    type === 'filled' && { backgroundColor },
                     align === 'center' && styles.center,
-                    style,
                 ]}
             >
-                <Ionicons name={icon as keyof typeof Ionicons.glyphMap} size={20} color={iconColor} />
-                <TextType>{name}</TextType>
+                <Ionicons name={icon as keyof typeof Ionicons.glyphMap} size={iconSize} color={iconColor} />
+                <TextType style={[{ color }, style]}>{name}</TextType>
             </Container>
         </TouchableOpacity>
-
     );
 }
 
 const styles = StyleSheet.create({
 
     center: {
-        textAlign: 'center'
+        alignItems: 'center',
+        // textAlign: 'center'
+
     },
     round: {
         borderRadius: 50,
@@ -78,9 +79,7 @@ const styles = StyleSheet.create({
         padding: 10,
         gap: 5,
         alignItems: 'center',
-    },
-    normal: {
-
+        borderRadius: 5
     },
     outline: {
         borderWidth: 1,

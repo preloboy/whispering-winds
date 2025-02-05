@@ -22,5 +22,6 @@ const styles = StyleSheet.create({
     tabbar:{
         borderRadius: 10,
         paddingVertical:5,
+        marginLeft:15,
     }
 })
