@@ -3,17 +3,7 @@ import { Button, Input } from "@rneui/themed";
 import { useState } from "react";
 import { Alert, AppState, StyleSheet, View } from "react-native"
 
-let appStateListenerAdded = false;
-if (!appStateListenerAdded) {
-    AppState.addEventListener('change', (state) => {
-        if (state === 'active') {
-            supabase.auth.startAutoRefresh()
-        } else {
-            supabase.auth.stopAutoRefresh()
-        }
-    })
-    appStateListenerAdded = true;
-}
+
 
 export const Login = () => {
 

@@ -9,7 +9,7 @@ export const Services = [
         name: 'Trains',
         icon: 'train',
         description: 'Find the cheapest trains/bus to your destination',
-        link: '/trains-bus'
+        link: '/trains'
     },
     {
         name: 'Cabs',
@@ -23,11 +23,5 @@ export const Services = [
         icon: 'home',
         description: 'Find the cheapest hotels to your destination',
         link: '/hotels'
-    },
-    {
-        name: 'Activities',
-        icon: 'activity',
-        description: 'Find the cheapest activities to your destination',
-        link: '/activities'
     }
 ]
