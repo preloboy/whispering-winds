@@ -8,13 +8,14 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Session } from "@supabase/supabase-js";
 import Auth from "./Auth";
-import GlobalProvider from "@/lib/GlobalProvider";
+import GlobalProvider, { useGlobalContext } from "@/lib/GlobalProvider";
 
 
 SplashScreen.preventAutoHideAsync();
 
 
 export default function RootLayout() {
+
   
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
@@ -30,6 +31,8 @@ export default function RootLayout() {
   if (!loaded) {
     return null;
   }
+
+
 
   return (
     <GlobalProvider>

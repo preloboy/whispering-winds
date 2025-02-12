@@ -18,18 +18,9 @@ export default function Auth() {
     })
   }, []);
 
-  let appStateListenerAdded = false;
-  if (!appStateListenerAdded) {
-      AppState.addEventListener('change', (state) => {
-          if (state === 'active') {
-              supabase.auth.startAutoRefresh()
-          } else {
-              supabase.auth.stopAutoRefresh()
-          }
-      })
-      appStateListenerAdded = true;
-  }
+  
 
+  
 
   return (
     <>

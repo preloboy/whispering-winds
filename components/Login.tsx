@@ -1,3 +1,4 @@
+import { useGlobalContext } from "@/lib/GlobalProvider";
 import { supabase } from "@/lib/supabase";
 import { Button, Input } from "@rneui/themed";
 import { useState } from "react";
@@ -18,7 +19,9 @@ export const Login = () => {
             password: password,
         })
 
-        if (error) Alert.alert(error.message)
+        if (error) {
+            Alert.alert(error.message)
+        }
         setLoading(false)
     }
 
@@ -36,7 +39,7 @@ export const Login = () => {
         if (!session) Alert.alert('Please check your inbox for email verification!')
         setLoading(false)
     }
-    
+
     return (
         <View style={styles.container}>
             <View style={[styles.verticallySpaced, styles.mt20]}>

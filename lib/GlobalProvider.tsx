@@ -1,4 +1,4 @@
-import { Session, User } from "@supabase/supabase-js";
+import { Session } from "@supabase/supabase-js";
 import React, { createContext, useContext, ReactNode, useState } from "react";
 import { supabase } from "./supabase";
 
@@ -7,8 +7,6 @@ interface GlobalContextType {
     isLogged: boolean;
     session: Session | null;
     setSession: (session: Session | null) => void;
-    user: User | null;
-    setUser: (user: User | null) => void;
     getSession: () => void;
     logout: () => void;
 }
@@ -22,8 +20,7 @@ interface GlobalProviderProps {
 export const GlobalProvider = ({ children }: GlobalProviderProps) => {
 
     const [session, setSession] = useState<Session | null>(null);
-    const [user, setUser] = useState<User | null>(null);
-    const isLogged = !!user;
+    const isLogged = !!session?.user;
 
     const getSession = () => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -31,22 +28,20 @@ export const GlobalProvider = ({ children }: GlobalProviderProps) => {
         })
     }
 
-    const logout = ()=>{
+    const logout = () => {
         supabase.auth.signOut()
-      }
+    }
+
+    const value = {
+        isLogged,
+        session,
+        setSession,
+        getSession,
+        logout,
+    };
 
     return (
-        <GlobalContext.Provider
-            value={{
-                isLogged,
-                session,
-                setSession,
-                user,
-                setUser,
-                getSession,
-                logout,
-            }}
-        >
+        <GlobalContext.Provider value={value}        >
             {children}
         </GlobalContext.Provider>
     );
