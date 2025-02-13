@@ -11,6 +11,7 @@ import { Tables } from '@/database.types'
 import { useGlobalContext } from '@/lib/GlobalProvider'
 import { Button } from './elements/Button'
 import { Input } from './elements/Input'
+import { InputEditable } from './InputEditable'
 
 export default function Account() {
 
@@ -102,12 +103,7 @@ export default function Account() {
         }
         setEditing(!editing)
       }} />
-      <Box style={styles.details}>
-        {editing ?
-          <Input placeholder='Enter name to modify...' onChangeText={setName} value={name} />
-          : <TextType>{userData?.name} </TextType>
-        }
-      </Box>
+      <InputEditable onchangeText={setName} value={name} editing={editing} >{userData?.name}</InputEditable>
       <Header title='Address' link='Edit' />
       <Box style={styles.details}>
         <TextType>{userData?.address}</TextType>
