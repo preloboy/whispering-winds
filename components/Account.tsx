@@ -1,23 +1,26 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { StyleSheet, Alert } from 'react-native'
-import { Session } from '@supabase/supabase-js'
 import { Container } from './elements/Container'
 import { TextType } from './elements/TextType'
 import { ImageView } from './elements/ImageView'
 import { Box } from './elements/Box'
-import { UserProps } from '@/constants/Users'
 import { Logo } from './elements/Logo'
 import { Header } from './Header'
 import { Tables } from '@/database.types'
 import { useGlobalContext } from '@/lib/GlobalProvider'
 import { Button } from './elements/Button'
+import { Input } from './elements/Input'
 
 export default function Account() {
 
   const { session } = useGlobalContext()
   const [userData, setUserData] = useState<Tables<'user_information'> | null>(null)
   const [loading, setLoading] = useState(true)
+
+  const [editing, setEditing] = useState(false)
+
+  const [name, setName] = useState(userData?.name)
 
   useEffect(() => {
     if (session) getProfile()
@@ -54,22 +57,17 @@ export default function Account() {
     }
   }
 
-  async function updateProfile() {
+  async function updateProfile(data: any) {
     try {
       setLoading(true)
       if (!session?.user) throw new Error('No user on the session!')
 
       const updates = {
-        // user_id: session?.user.id,
-        // username,
-        // website,
-        // avatar_url,
-        // updated_at: new Date(),
-        mobile_number: '+918812869479'
+
 
       }
 
-      const { error } = await supabase.from('user_information').update(updates).eq('user_id',session.user.id)
+      const { error } = await supabase.from('user_information').update(data).eq('user_id', session.user.id)
 
       if (error) {
         throw error
@@ -85,7 +83,6 @@ export default function Account() {
 
   return (
     <Container col>
-      <Button onPress={updateProfile} name='Update' />
       <Container style={styles.profile}>
         <Container style={styles.user}>
           <ImageView
@@ -97,15 +94,23 @@ export default function Account() {
             <TextType >{session?.user.email}</TextType>
           </Container>
         </Container>
-        <TextType type='defaultSemiBold' header={true}>Edit</TextType>
+        {/* {editing && <Button type='filled' style={{ fontWeight: '600' }} name='Update' link />} */}
       </Container>
-      <Header title='Personal Details' link='Edit' />
+      <Header title='Personal Details' link={editing ? 'Done' : 'Edit'} onPress={() => {
+        if (editing) {
+          updateProfile({ name: name })
+        }
+        setEditing(!editing)
+      }} />
       <Box style={styles.details}>
-        <TextType type='default'>{userData?.name}</TextType>
+        {editing ?
+          <Input placeholder='Enter name to modify...' onChangeText={setName} value={name} />
+          : <TextType>{userData?.name} </TextType>
+        }
       </Box>
       <Header title='Address' link='Edit' />
       <Box style={styles.details}>
-        <TextType type='default'>{userData?.address}</TextType>
+        <TextType>{userData?.address}</TextType>
       </Box>
       <Header title='Contact Details' link='Edit' />
       <Box style={styles.details}>
@@ -129,13 +134,14 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginBottom: 10,
     justifyContent: 'space-between',
+    alignItems: 'center'
   },
   details: {
     marginHorizontal: 15,
-    marginTop: 10,
-    borderRadius: 10,
-    paddingVertical: 10,
-    paddingLeft: 10
+    // marginTop: 10,
+    borderRadius: 7,
+    // paddingVertical: 10,
+    // paddingLeft: 10
   },
   social: {
     marginTop: 20,

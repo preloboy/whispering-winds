@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginHorizontal: 10,
         fontWeight: 'bold',
-        padding: 10,
+        padding: 5,
         gap: 5,
         alignItems: 'center',
         borderRadius: 5

@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Button } from "./elements/Button";
 import { TextType } from "./elements/TextType";
 import { StyleSheet } from "react-native";
