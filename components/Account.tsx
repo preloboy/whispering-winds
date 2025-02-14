@@ -19,9 +19,14 @@ export default function Account() {
   const [userData, setUserData] = useState<Tables<'user_information'> | null>(null)
   const [loading, setLoading] = useState(true)
 
-  const [editing, setEditing] = useState(false)
+  const [edit1, setEdit1] = useState(false)
+  const [edit2, setEdit2] = useState(false)
+  const [edit3, setEdit3] = useState(false)
 
-  const [name, setName] = useState(userData?.name)
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [mobile, setMobile] = useState('')
+  const [address, setAddress] = useState('')
 
   useEffect(() => {
     if (session) getProfile()
@@ -48,6 +53,8 @@ export default function Account() {
 
       if (data) {
         setUserData(data)
+        // console.log(data);
+
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -61,13 +68,8 @@ export default function Account() {
   async function updateProfile(data: any) {
     try {
       setLoading(true)
+
       if (!session?.user) throw new Error('No user on the session!')
-
-      const updates = {
-
-
-      }
-
       const { error } = await supabase.from('user_information').update(data).eq('user_id', session.user.id)
 
       if (error) {
@@ -91,27 +93,39 @@ export default function Account() {
             image='https://toppng.com/uploads/preview/stock-person-png-stock-photo-man-11563049686zqeb9zmqjd.png'
           />
           <Container col={true} style={{ paddingLeft: 10 }}>
-            <TextType type='subtitle'>Hi!, {userData?.name}</TextType>
+            <TextType type='title'>Hi!, {userData?.name}</TextType>
             <TextType >{session?.user.email}</TextType>
           </Container>
         </Container>
         {/* {editing && <Button type='filled' style={{ fontWeight: '600' }} name='Update' link />} */}
       </Container>
-      <Header title='Personal Details' link={editing ? 'Done' : 'Edit'} onPress={() => {
-        if (editing) {
+      <Header title='Personal Details' link={edit1 ? 'Done' : 'Edit'} onPress={() => {
+        if (edit1 && name!=='') {
           updateProfile({ name: name })
         }
-        setEditing(!editing)
+        setEdit1(!edit1)
       }} />
-      <InputEditable onchangeText={setName} value={name} editing={editing} >{userData?.name}</InputEditable>
-      <Header title='Address' link='Edit' />
       <Box style={styles.details}>
-        <TextType>{userData?.address}</TextType>
+        <InputEditable onchangeText={setName} placeHolder={name} editing={edit1} >{userData?.name}</InputEditable>
       </Box>
-      <Header title='Contact Details' link='Edit' />
+      <Header title='Address' link={edit2 ? 'Done' : 'Edit'} onPress={() => {
+        if (edit2 && address!== '') {
+          updateProfile({ address: address })
+        }
+        setEdit2(!edit2)
+      }} />
       <Box style={styles.details}>
-        <TextType type='default'>{userData?.mobile_number}</TextType>
-        <TextType type='default'>{userData?.email_address}</TextType>
+        <InputEditable onchangeText={setAddress} placeHolder={address} editing={edit2} >{userData?.address}</InputEditable>
+      </Box>
+      <Header title='Contact Details' link={edit3 ? 'Done' : 'Edit'} onPress={() => {
+        if (edit3 && mobile!=='') {
+          updateProfile({ mobile_number: mobile })
+        }
+        setEdit3(!edit3)
+      }} />
+      <Box style={styles.details}>
+        <InputEditable onchangeText={setMobile} placeHolder={mobile} editing={edit3} >{userData?.mobile_number}</InputEditable>
+        <InputEditable onchangeText={setEmail} placeHolder={email} editing={edit3} >{userData?.email_address}</InputEditable>
       </Box>
       <Container>
         <Container style={styles.social}>

@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
   included: {
     textAlignVertical:'center',
     paddingHorizontal:10,
-    paddingVertical:10
   },
   header: {
     paddingHorizontal: 15,

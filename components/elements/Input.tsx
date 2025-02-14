@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
     input: {
         fontSize: 16,
         lineHeight: 24,
-        padding: 10,
         borderRadius: 10
     },
 })
