@@ -12,6 +12,7 @@ import { useGlobalContext } from '@/lib/GlobalProvider'
 import { Button } from './elements/Button'
 import { Input } from './elements/Input'
 import { InputEditable } from './InputEditable'
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry'
 
 export default function Account() {
 
@@ -29,8 +30,11 @@ export default function Account() {
   const [address, setAddress] = useState('')
 
   useEffect(() => {
-    if (session) getProfile()
-  }, [session])
+    if (session) {
+      getProfile()
+      console.log('Session',session);
+    }
+  }, [userData !== null])
 
   async function getProfile() {
     try {
@@ -53,7 +57,7 @@ export default function Account() {
 
       if (data) {
         setUserData(data)
-        // console.log(data);
+        console.log('Data', data);
 
       }
     } catch (error) {
@@ -100,7 +104,7 @@ export default function Account() {
         {/* {editing && <Button type='filled' style={{ fontWeight: '600' }} name='Update' link />} */}
       </Container>
       <Header title='Personal Details' link={edit1 ? 'Done' : 'Edit'} onPress={() => {
-        if (edit1 && name!=='') {
+        if (edit1 && name !== '') {
           updateProfile({ name: name })
         }
         setEdit1(!edit1)
@@ -110,7 +114,7 @@ export default function Account() {
         <InputEditable onchangeText={setName} placeHolder='Enter your name ...' editing={edit1} >{userData?.name}</InputEditable>
       </Box>
       <Header title='Address' link={edit2 ? 'Done' : 'Edit'} onPress={() => {
-        if (edit2 && address!== '') {
+        if (edit2 && address !== '') {
           updateProfile({ address: address })
         }
         setEdit2(!edit2)
@@ -119,7 +123,7 @@ export default function Account() {
         <InputEditable onchangeText={setAddress} placeHolder={address} editing={edit2} >{userData?.address}</InputEditable>
       </Box>
       <Header title='Contact Details' link={edit3 ? 'Done' : 'Edit'} onPress={() => {
-        if (edit3 && mobile!=='') {
+        if (edit3 && mobile !== '') {
           updateProfile({ mobile_number: mobile })
         }
         setEdit3(!edit3)
