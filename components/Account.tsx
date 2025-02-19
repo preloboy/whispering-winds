@@ -106,7 +106,8 @@ export default function Account() {
         setEdit1(!edit1)
       }} />
       <Box style={styles.details}>
-        <InputEditable onchangeText={setName} placeHolder={name} editing={edit1} >{userData?.name}</InputEditable>
+        <InputEditable onchangeText={setName} placeHolder={userData?.name ?? 'Enter your name ...'} editing={edit1} >{userData?.name}</InputEditable>
+        <InputEditable onchangeText={setName} placeHolder='Enter your name ...' editing={edit1} >{userData?.name}</InputEditable>
       </Box>
       <Header title='Address' link={edit2 ? 'Done' : 'Edit'} onPress={() => {
         if (edit2 && address!== '') {
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
     // marginTop: 10,
     borderRadius: 7,
-    // paddingVertical: 10,
+    paddingVertical: 5,
     // paddingLeft: 10
   },
   social: {
